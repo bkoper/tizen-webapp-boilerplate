@@ -1,0 +1,42 @@
+{
+  "name": "webapp-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "js/main.js",
+  "config": {
+    "target": "0000c6410000a200",
+    "profileName": "gear-s2",
+    "package": "iigrT5c0NH",
+    "appName": "TizenTemplate",
+    "buildDir": "./build/"
+  },
+  "scripts": {
+    "clean": "rm -fr $npm_package_config_buildDir",
+    "prebuild": "npm run clean",
+    "build": "webpack",
+    "prepackage": "npm run build",
+    "package": "tizen package -t wgt -- $npm_package_config_buildDir --sign $npm_package_config_profileName",
+    "predeploy": "npm run package",
+    "deploy": "tizen install -- $npm_package_config_buildDir --name $npm_package_config_appName.wgt -t $npm_package_config_target && tizen run --pkgid $npm_package_config_package  -t $npm_package_config_target"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.0",
+    "node-sass": "^4.5.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
+    "webpack": "^2.3.3"
+  }
+}
