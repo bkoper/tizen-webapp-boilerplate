@@ -1,3 +1,6 @@
 .idea
+.tproject
+.DS_Store
 build
-dist
+npm-debug.log
+node_modules
