@@ -17,7 +17,8 @@
     "prepackage": "npm run build",
     "package": "tizen package -t wgt -- $npm_package_config_buildDir --sign $npm_package_config_profileName",
     "predeploy": "npm run package",
-    "deploy": "tizen install -- $npm_package_config_buildDir --name $npm_package_config_appName.wgt -t $npm_package_config_target && tizen run --pkgid $npm_package_config_package  -t $npm_package_config_target"
+    "deploy": "tizen install -- $npm_package_config_buildDir --name $npm_package_config_appName.wgt -t $npm_package_config_target",
+    "postdeploy": "tizen run --pkgid $npm_package_config_package  -t $npm_package_config_target"
   },
   "author": "",
   "license": "MIT",
