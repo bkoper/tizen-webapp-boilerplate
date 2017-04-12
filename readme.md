@@ -1,6 +1,5 @@
 ## Intro
 As simple as possible boilerplate app for tizen web project (wearable or mobile).
-Can be used for a starting point for react based apps.
 
 ## Preconditions 
 1. Install [TizenStudio](https://developer.tizen.org/development/tizen-studio/download)
