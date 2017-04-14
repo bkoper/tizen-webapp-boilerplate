@@ -2,20 +2,20 @@
 As simple as possible boilerplate app for tizen web project (wearable or mobile).
 
 ## Preconditions 
-1. Install [TizenStudio](https://developer.tizen.org/development/tizen-studio/download)
-1. You will need: 
+### Install [TizenStudio](https://developer.tizen.org/development/tizen-studio/download)
+### You will need: 
 * `sdb` from `<TIZEN-STUIDO-PATH>/tools/`
 * `tizen` from `<TIZEN-STUIDO-PATH>/tools/ide/bin/`.
-1. Setup your security profile(s). 
+### Setup your security profile(s). 
    You will need to use IDE for that: `Tools -> Certyfication Manager`.
-1. Set your `profile.xml`'s location (it should contains security profiles information). 
+### Set your `profile.xml`'s location (it should contains security profiles information). 
 
 ```shell
 tizen cli-config -g default.profiles.path=<PATH>/profiles.xml
 ```
 
 ## Project setup
-1. Update the config section of your `package.json` file. Ex:
+Update the config section of your `package.json` file. Ex:
 ```json
   "config": {
       "target": "0000c6410000a200",
@@ -31,9 +31,10 @@ tizen cli-config -g default.profiles.path=<PATH>/profiles.xml
  0000c6410000a200        device          SM-Z300H
  ```
 -  `profileName` security profile from your `profiles.xml` file,
--   application `package` id from defined in `static/config.xml`,
+-   application `package` id,
 -   `appName` from `static/config.xml`.
-1. You may also update your application config template file located at `static/config.xml` 
+
+You may also update your application config template file located at `static/config.xml`
 just stick to the [tizen guidelines](https://developer.tizen.org/development/training/web-application/application-development-process/setting-project-properties)
 
 ## Usage
