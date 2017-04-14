@@ -2,13 +2,13 @@
 As simple as possible boilerplate app for tizen web project (wearable or mobile).
 
 ## Preconditions 
-### Install [TizenStudio](https://developer.tizen.org/development/tizen-studio/download)
-### You will need: 
+1. Install [TizenStudio](https://developer.tizen.org/development/tizen-studio/download)
+You will need: 
 * `sdb` from `<TIZEN-STUIDO-PATH>/tools/`
 * `tizen` from `<TIZEN-STUIDO-PATH>/tools/ide/bin/`.
-### Setup your security profile(s). 
+1. Setup your security profile(s). 
    You will need to use IDE for that: `Tools -> Certyfication Manager`.
-### Set your `profile.xml`'s location (it should contains security profiles information). 
+1. Set your `profile.xml`'s location (it should contains security profiles information). 
 
 ```shell
 tizen cli-config -g default.profiles.path=<PATH>/profiles.xml
