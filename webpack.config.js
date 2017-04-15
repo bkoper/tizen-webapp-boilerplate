@@ -1,12 +1,12 @@
-const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const config = require('./package.json').config;
+const config = require("./package.json").config;
 const buildDir = config.buildDir;
 const updateConfigFile = (content, path) => {
     let contentString;
 
-    if(~path.indexOf('config.xml')) {
+    if(~path.indexOf("config.xml")) {
         contentString = content.toString();
         contentString = contentString.replace(/TEMPLATE_APP_NAME/g, config.appName);
         contentString = contentString.replace(/TEMPLATE_PACKAGE_ID/g, config.package);
@@ -16,31 +16,35 @@ const updateConfigFile = (content, path) => {
 };
 
 module.exports = {
-    entry: './js/main.js',
+    entry: "./js/main.js",
     output: {
         path: path.resolve(__dirname, buildDir),
-        filename: 'bundle.js'
+        filename: "bundle.js"
     },
     plugins: [
         new CopyWebpackPlugin([
             {
-                from: 'static',
+                from: "static",
                 transform: updateConfigFile
             }
         ])
     ],
-    target: 'web',
+    target: "web",
     module: {
-        loaders: [
-            {
-                test: /\.js?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react', 'stage-2']
-                }
-            },
-            {test: /\.scss/, loaders: ['style-loader', 'css-loader', 'sass-loader']}
+        rules: [
+          {
+            test: /\.js?$/,
+            include: [path.resolve(__dirname, "js")],
+            loader: "babel-loader",
+            options: {
+              presets: ["es2015", "react", "stage-2"]
+            }
+          },
+          {
+            test: /\.scss/,
+            include: [path.resolve(__dirname, "scss")],
+            loader: ["style-loader", "css-loader","sass-loader"]
+          }
         ]
     }
 };
