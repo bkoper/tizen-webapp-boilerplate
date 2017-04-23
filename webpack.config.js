@@ -1,5 +1,7 @@
 const path = require("path");
+const webpack = require("webpack");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = require("./package.json").config;
 const buildDir = config.buildDir;
@@ -16,10 +18,13 @@ const updateConfigFile = (content, path) => {
 };
 
 module.exports = {
-    entry: "./js/main.js",
+    entry: {
+        main: "./js/main.js",
+        vendors: ["react", "react-dom"]
+    },
     output: {
         path: path.resolve(__dirname, buildDir),
-        filename: "bundle.js"
+        filename: "[name].[chunkhash].js"
     },
     plugins: [
         new CopyWebpackPlugin([
@@ -27,23 +32,32 @@ module.exports = {
                 from: "static",
                 transform: updateConfigFile
             }
-        ])
+        ]),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ["vendors", "manifest"]
+        }),
+        new HtmlWebpackPlugin({
+            template: path.resolve(__dirname, "static/index.html")
+        })
     ],
+    resolve: {
+        extensions: [".js", ".jsx"]
+    },
     target: "web",
     module: {
         rules: [
           {
-            test: /\.js?$/,
-            include: [path.resolve(__dirname, "js")],
-            loader: "babel-loader",
-            options: {
-              presets: ["es2015", "react", "stage-2"]
-            }
+            test: /(.jsx|.js)$/,
+            use: [{
+                loader: "babel-loader",
+                options: {
+                    presets: ["es2015", "react", "stage-2"]
+                }
+            }],
           },
           {
             test: /\.scss/,
-            include: [path.resolve(__dirname, "scss")],
-            loader: ["style-loader", "css-loader","sass-loader"]
+            use: ["style-loader", "css-loader","sass-loader"]
           }
         ]
     }
