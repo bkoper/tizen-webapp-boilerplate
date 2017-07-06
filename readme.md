@@ -38,10 +38,10 @@ You may also update your application config template file located at `static/con
 just stick to the [tizen guidelines](https://developer.tizen.org/development/training/web-application/application-development-process/setting-project-properties)
 
 ## Usage
-- `npm i` - don't forget,
-- `npm run build` - creates app build at `build` dir,
-- `npm run package` - creates `<APP_NAME>.wgt` file at `build`,
-- `npm run deploy` - install and run an app on the target device.
+- `yarn` - don't forget,
+- `yarn build` - creates app build at `build` dir,
+- `yarn package` - creates `<APP_NAME>.wgt` file at `build`,
+- `yarn deploy` - install and run an app on the target device.
 
 ## Licence
 MIT
