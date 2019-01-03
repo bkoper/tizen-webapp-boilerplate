@@ -1,6 +1,8 @@
 .idea
 .tproject
+.history
 .DS_Store
+.metadata
 build
 npm-debug.log
 node_modules

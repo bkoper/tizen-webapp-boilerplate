@@ -16,7 +16,7 @@ const updateConfigFile = (content, path) => {
 };
 
 module.exports = {
-    entry: "./js/main.js",
+    entry: "./src/main.js",
     output: {
         path: path.resolve(__dirname, buildDir),
         filename: "bundle.js"
@@ -34,7 +34,7 @@ module.exports = {
         rules: [
           {
             test: /\.js?$/,
-            include: [path.resolve(__dirname, "js")],
+            include: [path.resolve(__dirname, "src")],
             loader: "babel-loader",
             options: {
               presets: ["es2015", "react", "stage-2"]
@@ -42,7 +42,7 @@ module.exports = {
           },
           {
             test: /\.scss/,
-            include: [path.resolve(__dirname, "scss")],
+            include: [path.resolve(__dirname, "src")],
             loader: ["style-loader", "css-loader","sass-loader"]
           }
         ]

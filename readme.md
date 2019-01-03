@@ -6,13 +6,11 @@ As simple as possible boilerplate app for tizen web project (wearable or mobile)
 You will need: 
 * `sdb` from `<TIZEN-STUIDO-PATH>/tools/`
 * `tizen` from `<TIZEN-STUIDO-PATH>/tools/ide/bin/`.
-1. Setup your security profile(s). 
+2. Setup your security profile(s). 
    You will need to use IDE for that: `Tools -> Certyfication Manager`.
-1. Set your `profile.xml`'s location (it should contains security profiles information). 
 
-```shell
-tizen cli-config -g default.profiles.path=<PATH>/profiles.xml
-```
+   [Flow Samsung's instruction](https://developer.samsung.com/z/develop/getting-certificates/create)
+2. Go to `Device Manager`, select device and select `Permit to install applications`
 
 ## Project setup
 Update the config section of your `package.json` file. Ex:
@@ -24,11 +22,12 @@ Update the config section of your `package.json` file. Ex:
       "appName": "SampleName"
   }
 ```
-- `target` device on which you will deploy final app. It can be get from `sdb`:
+- connect device using `sdb`:
  ```shell
+ # sdb connect 10.0.1.14
  # sdb devices
  List of devices attached 
- 0000c6410000a200        device          SM-Z300H
+ 10.0.1.13:26101        device          SM-Z300H
  ```
 -  `profileName` security profile from your `profiles.xml` file,
 -   application `package` id,

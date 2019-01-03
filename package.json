@@ -4,21 +4,18 @@
   "description": "",
   "main": "js/main.js",
   "config": {
-    "target": "0000c6410000a200",
-    "profileName": "gear-s2",
+    "target": "10.0.1.14:26101",
+    "profileName": "all-devices",
     "package": "iigrT5c0NH",
     "appName": "TizenTemplate",
-    "buildDir": "./build/"
+    "buildDir": "./build"
   },
   "scripts": {
-    "clean": "rm -fr $npm_package_config_buildDir",
-    "prebuild": "npm run clean",
+    "prebuild": "rm -fr $npm_package_config_buildDir",
     "build": "webpack",
     "prepackage": "npm run build",
-    "package": "tizen package -t wgt -- $npm_package_config_buildDir --sign $npm_package_config_profileName",
-    "predeploy": "npm run package",
-    "deploy": "tizen install -- $npm_package_config_buildDir --name $npm_package_config_appName.wgt -t $npm_package_config_target",
-    "postdeploy": "tizen run --pkgid $npm_package_config_package  -t $npm_package_config_target"
+    "package": "./scripts/package.sh $npm_package_config_buildDir $npm_package_config_profileName",
+    "deploy": "./scripts/deploy.sh $npm_package_config_buildDir $npm_package_config_appName $npm_package_config_package"
   },
   "author": "",
   "license": "MIT",
