@@ -6,7 +6,7 @@
   "config": {
     "target": "10.0.1.14:26101",
     "profileName": "all-devices",
-    "package": "iigrT5c0NH",
+    "package": "wigrT5c0NH",
     "appName": "TizenTemplate",
     "buildDir": "./build"
   },
@@ -15,26 +15,26 @@
     "build": "webpack",
     "prepackage": "npm run build",
     "package": "./scripts/package.sh $npm_package_config_buildDir $npm_package_config_profileName",
+    "predeploy": "npm run package",
     "deploy": "./scripts/deploy.sh $npm_package_config_buildDir $npm_package_config_appName $npm_package_config_package"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-core": "^6.24.1",
-    "babel-loader": "^6.4.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "css-loader": "^0.28.0",
-    "node-sass": "^4.5.2",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.1"
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "babel-loader": "^8.0.0-beta.1",
+    "babel-preset-next": "^1.2.0",
+    "css-loader": "^2.1.0",
+    "node-sass": "^4.11.0",
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.0.1",
-    "webpack": "^2.3.3"
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.0"
   }
 }

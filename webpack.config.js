@@ -1,3 +1,5 @@
+
+require("@babel/polyfill");
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
@@ -16,11 +18,13 @@ const updateConfigFile = (content, path) => {
 };
 
 module.exports = {
-    entry: "./src/main.js",
+    entry: ["@babel/polyfill", "./src/main.js"],
     output: {
         path: path.resolve(__dirname, buildDir),
         filename: "bundle.js"
     },
+    devtool: 'source-map',
+    mode: 'development',
     plugins: [
         new CopyWebpackPlugin([
             {
@@ -37,7 +41,7 @@ module.exports = {
             include: [path.resolve(__dirname, "src")],
             loader: "babel-loader",
             options: {
-              presets: ["es2015", "react", "stage-2"]
+              presets: ["next"]
             }
           },
           {
